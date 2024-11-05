@@ -87,5 +87,31 @@ public class User {
         // Verificar despesas
         meuBb.mostrarResumoTransacoes();
 
+        // Realizar transferencia
+        ContaExterna pixDoMercado = new ContaExterna("Mercado de Casa",
+                                                    "Lider",
+                                                    "123.123.123-12",
+                                                     caixa);
+
+        meuBb.adicionarTransacao(new Transferencia("Compra do mes",
+                                                   150,
+                                                   data.stringToDate("20/10/2024"),
+                                                   casa,
+                                                   false,
+                                                   false,
+                                                   false,
+                                                   pixDoMercado));
+
+        // novo salario
+        meuBb.adicionarTransacao(new Receita(
+                "Bolsa",
+                12000,
+                data.stringToDate("25/10/2024"),
+                pessoal,
+                true,
+                true
+        ));
+
+        ronald.imprimirResumo();
     }
 }
