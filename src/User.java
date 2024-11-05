@@ -60,5 +60,32 @@ public class User {
         // Obter saldo das contas individualmente
         meuBb.imprimirResumo();
         meuItau.imprimirResumo();
+
+        // Adicionar cartao
+        meuBb.adicionarCartao(
+                new Cartao("Compras online",
+                        "1234 1234",
+                        1000,
+                        1,
+                        23,
+                        30)
+        );
+
+        // Criar despesa com cartao
+        meuBb.adicionarTransacao(
+                new DespesaCartao(
+                        "Televisao",
+                        2500,
+                        data.stringToDate("29/10/2024"),
+                        casa,
+                        true,
+                        false,
+                        0,
+                        "1234 1234")
+        );
+
+        // Verificar despesas
+        meuBb.mostrarResumoTransacoes();
+
     }
 }

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class ContaPessoal extends Conta implements Balanco {
     private final ArrayList<Transacao> transacoes = new ArrayList<>();
-    Cartao[] cartoes;
+    private final ArrayList<Cartao> cartoes = new ArrayList<>();
 
     public ContaPessoal(String nome, String nomeProprietario, String cpf, Banco banco) {
         super(nome, nomeProprietario, cpf, banco);
@@ -55,6 +55,21 @@ public class ContaPessoal extends Conta implements Balanco {
         }
 
         return saldo;
+    }
+
+    public void adicionarCartao(Cartao cartao) {
+        cartoes.add(cartao);
+    }
+
+    public Cartao obterCartaoPeloApelido(String apelido) {
+        for (Cartao cartao : cartoes) {
+            if (cartao.getApelido().equals(apelido)) {
+                return cartao;
+            }
+        }
+
+        System.out.println("Cartao nao encontrado na lista de cartoes!");
+        return null;
     }
 
     @Override
